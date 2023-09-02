@@ -1,0 +1,17 @@
+{% extends 'layout/base.html' %}
+
+{% block title %}
+    Объявления
+{% endblock title %}
+
+{% block content %}
+    <p class="h2">Список объявлений</p>
+    <ul class="list-group list-group-flush">
+        {% for ad in ads %}
+            <li class="list-group-item">
+                <a class="link-info h4 link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="{% url 'ad_detail' ad.id%}">{{ ad.title }}</a>
+                <p class="mt-4 fs-5">{{ ad.preview }}</p>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock content %}

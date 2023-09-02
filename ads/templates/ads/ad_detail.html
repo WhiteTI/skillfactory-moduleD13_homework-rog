@@ -1,0 +1,28 @@
+{% extends 'layout/base.html' %}
+
+{% block title %}
+    Объявления
+{% endblock title %}
+
+{% block content %}
+    <p class="h1">{{ ad.title }}</p>
+    {% if user == ad.user %}
+        <a href="{% url 'edit_ad' ad.id%}">редактировать</a>
+    {% endif %}
+    <p class="h5">Категория: {{ ad.category }}</p>
+    <div style="width: 600px">
+        {% if ad.image != 'images/default.jpg' %}
+            <img src="{{ ad.image.url }}" class="img-fluid" alt="{{ ad.title }}">
+        {% endif %}
+    </div>
+    <p class="fs-4 mb-5">{{ ad.text }}</p>
+
+    <p class="h3">Комментарии:</p>
+    {% for review in reviews %}
+        <p class="fs-5">{{ review.text }}</p>
+    {% empty %}
+        <p>Пока нет комментариев</p>
+    {% endfor %}
+
+    <a class="btn btn-outline-primary me-2" href="{% url 'create_review' ad.id%}">Оставить комментарий</a>
+{% endblock content %}

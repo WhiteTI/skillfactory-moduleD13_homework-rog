@@ -1,0 +1,26 @@
+{% extends 'layout/base.html' %}
+
+{% block title %}
+    Объявления
+{% endblock title %}
+
+{% block content %}
+    <h2 class="text-center">Профиль пользователя: {{ user }}</h2>
+    <p class="h4">Мои объявления</p>
+    <ul class="list-group list-group-flush">
+        {% for ad in ads %}
+            <li class="list-group-item"><a href="{% url 'ad_detail' ad.id%}">{{ ad.title }}</a></li>
+        {% endfor %}
+    </ul>
+    <p class="h4">Мои комментарии</p>
+    <ul class="list-group list-group-flush">
+        {% for review in reviews %}
+            <li class="list-group-item">
+                {{ review.text }}
+                {% if not review.accepted %}
+                    {% include 'ads/accept_review.html' %}
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock content %}

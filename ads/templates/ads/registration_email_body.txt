@@ -1,0 +1,2 @@
+Hello! Welcome to our bulletin board.
+Please use the following code to confirm your registration: {{ confirmation_code }}

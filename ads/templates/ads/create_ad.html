@@ -1,0 +1,16 @@
+{% extends 'layout/base.html' %}
+
+{% block title %}
+    Создание объявления
+{% endblock title %}
+
+{% block content %}
+    <p class="h2 mb-4 text-center">Напишите объявление</p>
+    <div class="mx-auto p-2" style="width: 500px">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary mt-4 mb-3">Создать</button>
+        </form>
+    </div>
+{% endblock content %}
